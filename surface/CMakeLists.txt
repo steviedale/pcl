@@ -9,21 +9,19 @@ PCL_SUBSYS_DEPEND(build "${SUBSYS_NAME}" DEPS ${SUBSYS_DEPS} OPT_DEPS qhull)
 PCL_ADD_DOC("${SUBSYS_NAME}")
 
 if(build)
-    if(QHULL_FOUND)
-        set(HULL_INCLUDES
-            "include/pcl/${SUBSYS_NAME}/concave_hull.h"
-            "include/pcl/${SUBSYS_NAME}/convex_hull.h"
-            "include/pcl/${SUBSYS_NAME}/qhull.h"
-            )
-        set(HULL_IMPLS
-            "include/pcl/${SUBSYS_NAME}/impl/concave_hull.hpp"
-            "include/pcl/${SUBSYS_NAME}/impl/convex_hull.hpp"
-            )
-        set(HULL_SOURCES
-            src/concave_hull.cpp
-            src/convex_hull.cpp
-            )
-    endif(QHULL_FOUND)
+    set(HULL_INCLUDES
+        "include/pcl/${SUBSYS_NAME}/concave_hull.h"
+        "include/pcl/${SUBSYS_NAME}/convex_hull.h"
+        "include/pcl/${SUBSYS_NAME}/qhull.h"
+        )
+    set(HULL_IMPLS
+        "include/pcl/${SUBSYS_NAME}/impl/concave_hull.hpp"
+        "include/pcl/${SUBSYS_NAME}/impl/convex_hull.hpp"
+        )
+    set(HULL_SOURCES
+        src/concave_hull.cpp
+        src/convex_hull.cpp
+        )
     
     if (VTK_FOUND AND NOT ANDROID)
         set(VTK_USE_FILE "${VTK_USE_FILE}" CACHE INTERNAL "VTK_USE_FILE")
